@@ -7,7 +7,7 @@ export async function ensureAdmin(
   request: Request,
   response: Response,
   next: NextFunction
-) {
+): Promise<void> {
   const { id } = request.user;
 
   const usersRepository = new UsersRepository();
