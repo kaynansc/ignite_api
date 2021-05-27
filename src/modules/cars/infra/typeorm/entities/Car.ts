@@ -32,6 +32,8 @@ class Car {
 
   @Column()
   fine_amount: number;
+
+  @Column()
   brand: string;
 
   @ManyToOne(() => Category)
