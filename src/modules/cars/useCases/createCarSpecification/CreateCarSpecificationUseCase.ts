@@ -31,8 +31,6 @@ class CreateCarSpecificationUseCase {
       specifications_id
     );
 
-    console.log(specifications);
-
     carExists.specifications = specifications;
 
     await this.carsRepository.create(carExists);
