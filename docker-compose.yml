@@ -25,6 +25,7 @@ services:
       - database
     depends_on: 
       - database
+    restart: always
 
 volumes: 
   pgdata: 
