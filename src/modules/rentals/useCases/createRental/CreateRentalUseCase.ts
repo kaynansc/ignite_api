@@ -45,7 +45,7 @@ class CreateRentalUseCase {
     );
 
     if (rentalOpenToUser) {
-      throw new AppError("Car is not available");
+      throw new AppError("There's rental in progress for user!");
     }
 
     const dateNow = this.dateProvider.getDateNow();
