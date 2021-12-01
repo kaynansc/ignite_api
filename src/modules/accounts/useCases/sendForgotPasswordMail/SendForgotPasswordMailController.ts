@@ -1,39 +1,17 @@
-import { v4 as uuidV4 } from "uuid";
+import { Request, Response } from "express";
+import { container } from "tsyringe";
+import { SendForgotPasswordMailUseCase } from "./SendForgotPasswordMailUseCase";
 
-import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
-import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
-import { IDateProvider } from "@shared/container/Providers/DataProvider/IDateProvider";
-import { AppError } from "@shared/errors/AppError";
-import { inject, injectable } from "tsyringe";
+class SendForgotPasswordMailController {
+  async handle(request: Request, response: Response): Promise<Response> {
+    const { email } = request.body;
 
-@injectable()
-class SendForgotPasswordMailUseCase {
-  constructor(
-    @inject("UsersRepository")
-    private usersRepository: IUsersRepository,
-    @inject("UsersTokensRepository")
-    private usersTokensRepository: IUsersTokensRepository,
-    @inject("DayjsDateProvider")
-    private dateProvider: IDateProvider,
-  ) { }
+    const sendForgotPasswordMailUseCase = container.resolve(SendForgotPasswordMailUseCase);
 
-  async execute(email: string) {
-    const user = await this.usersRepository.findByEmail(email);
+    await sendForgotPasswordMailUseCase.execute(email);
 
-    if (!user) {
-      throw new AppError("User does not exists!");
-    }
-
-    const token = uuidV4();
-
-    const expires_date = this.dateProvider.addHours(3);
-
-    await this.usersTokensRepository.create({
-      refresh_token: token,
-      user_id: user.id,
-      expires_date,
-    });
+    return response.send();
   }
 }
 
-export { SendForgotPasswordMailUseCase };
+export { SendForgotPasswordMailController };

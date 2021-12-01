@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
 
-import "@shared/container/Providers";
+import "@shared/container/Providers/index";
 
 import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";

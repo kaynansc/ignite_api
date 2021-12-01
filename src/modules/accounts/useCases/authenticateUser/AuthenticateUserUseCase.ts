@@ -31,7 +31,7 @@ class AuthenticateUserUseCase {
     private userTokensRepository: IUsersTokensRepository,
     @inject("DayjsDateProvider")
     private dateProvider: IDateProvider,
-  ) {}
+  ) { }
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email);
@@ -51,7 +51,7 @@ class AuthenticateUserUseCase {
       subject: user.id,
       expiresIn: expires_in_token,
     });
-    
+
     const refresh_token = sign({ email }, secret_refesh_token, {
       subject: user.id,
       expiresIn: expires_in_refresh_token,
@@ -62,7 +62,7 @@ class AuthenticateUserUseCase {
     await this.userTokensRepository.create({
       user_id: user.id,
       refresh_token,
-      expires_date: expires_date_refresh_token, 
+      expires_date: expires_date_refresh_token,
     })
 
     return {
