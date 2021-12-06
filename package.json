@@ -6,7 +6,7 @@
   "author": "kaynansc <kaynansc@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn --clear src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
     "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles",
     "seed:admin": "ts-node-dev -r tsconfig-paths/register src/shared/infra/typeorm/seed/admin.ts"
@@ -21,12 +21,14 @@
     "cross-env": "^7.0.3",
     "csv-parse": "^4.15.4",
     "dayjs": "^1.10.5",
+    "dotenv": "^10.0.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "handlebars": "^4.7.7",
     "jsonwebtoken": "^8.5.1",
+    "mime": "^3.0.0",
     "multer": "^1.4.2",
     "nodemailer": "^6.7.2",
     "pg": "^8.6.0",
@@ -40,6 +42,7 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/jest": "^26.0.23",
+    "@types/mime": "^2.0.3",
     "@types/multer": "^1.4.5",
     "@types/nodemailer": "^6.4.4",
     "@types/supertest": "^2.0.11",
