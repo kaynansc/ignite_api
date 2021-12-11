@@ -45,7 +45,7 @@
 git clone https://github.com/kaynansc/ignite_api
 ```
 
-### 2. Criar o arquivo .env e ormconfig.json com base nos arquivos de exemplo (.env.example e ormconfig.example.json)
+### 2. Criar os arquivos (.env e ormconfig.json) com base nos arquivos de exemplo (.env.example e ormconfig.example.json)
 
 ### 3. Levantar os containers (postgres e redis)
 ```
