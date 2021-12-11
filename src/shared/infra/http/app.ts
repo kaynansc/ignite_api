@@ -51,15 +51,4 @@ if (process.env.SENTRY_DSN.length > 50) {
   app.use(Sentry.Handlers.errorHandler());
 }
 
-app.use(
-  Sentry.Handlers.errorHandler({
-    shouldHandleError(error) {
-      if (error.status === 429 || error.status === 500) {
-        return true;
-      }
-      return false;
-    },
-  })
-);
-
 export { app };
