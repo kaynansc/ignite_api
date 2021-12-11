@@ -52,12 +52,17 @@ git clone https://github.com/kaynansc/ignite_api
 docker-compose up -d
 ```
 
-### 4. Rodar as migrations
+### 4. Instalar dependências
+```
+npm install
+```
+
+### 5. Rodar as migrations
 ```
 npm run typeorm migration:run
 ```
 
-### 5. Rodar a aplicação
+### 6. Rodar a aplicação
 ```
 npm run dev
 ```
